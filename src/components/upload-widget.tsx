@@ -4,10 +4,11 @@ import { UploadWidgetHeader } from "./upload-widget-header";
 import { UploadWidgetUploadList } from "./upload-widget-upload-list";
 import { UploadWidgetMinimizedButton } from "./upload-widget-minimized-button";
 import { motion, useCycle } from "motion/react";
+import { usePendingUploads } from "../store/uploads";
 
 export function UploadWidget() {
-  const  isThereAnyPendingUploads = true;
-  const [isWidgetOpen, toggleWidgetOpen] = useCycle(false, true);
+   const { isThereAnyPendingUploads } = usePendingUploads();
+   const [isWidgetOpen, toggleWidgetOpen] = useCycle(false, true);
 
   return (
     <Collapsible.Root onOpenChange={() => toggleWidgetOpen()} asChild>
